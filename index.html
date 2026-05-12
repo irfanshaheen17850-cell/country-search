@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sedgwick County Inmate Search Guide - Professional Green Edition</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-green: #059669;
+            /* Emerald 600 */
+            --dark-green: #064e3b;
+            /* Emerald 900 */
+            --light-green: #ecfdf5;
+            /* Emerald 50 */
+            --accent-green: #10b981;
+            /* Emerald 500 */
+            --bg-soft: #f0fdf4;
+            /* Very light green tint */
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-soft);
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 20px 8%;
+            background: #ffffff;
+            display: flex;
+            justify: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-green);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: white;
+            padding: 100px 8%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 19px;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 18px 45px;
+            background: #ffffff;
+            color: var(--dark-green);
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            background: var(--light-green);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 40px;
+        }
+
+        .main-content {
+            background: #fff;
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(5, 150, 105, 0.1);
+        }
+
+        .main-content h2 {
+            font-size: 30px;
+            margin-top: 45px;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .main-content h2::before {
+            content: '';
+            width: 6px;
+            height: 30px;
+            background: var(--accent-green);
+            border-radius: 10px;
+        }
+
+        .main-content h3 {
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+        }
+
+        .main-content p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .highlight-box {
+            background: var(--light-green);
+            border-left: 5px solid var(--primary-green);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--dark-green);
+        }
+
+        .green-link {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .green-link:hover {
+            color: var(--dark-green);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(5, 150, 105, 0.05);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: var(--dark-green);
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .card ul li a {
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .card ul li a:hover {
+            color: var(--primary-green);
+            padding-left: 5px;
+        }
+
+        .cta-sidebar {
+            display: block;
+            text-align: center;
+            background: var(--primary-green);
+            color: white !important;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: var(--light-green);
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-box:hover {
+            background: #d1fae5;
+        }
+
+        .stat-box h4 {
+            font-size: 30px;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        footer {
+            background: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        @media(max-width:1000px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                padding: 15px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">SedgwickInmateLookup</div>
+        <div class="nav-links">
+            <a href="https://sedgwickinmatesearch.org/">Home</a>
+            <a href="https://sedgwickinmatesearch.org/">Search Portal</a>
+            <a href="https://sedgwickinmatesearch.org/">Resources</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>
+            Authorized Guide to the <br>
+            Sedgwick County Inmate Search
+        </h1>
+        <p>
+            Your comprehensive resource for accessing the official
+            <a href="https://sedgwickinmatesearch.org/"
+                style="color:white; text-decoration: underline; font-weight: 700;">Sedgwick County Database</a>.
+            Locate inmates, check booking status, and view detention records instantly.
+        </p>
+        <a href="https://sedgwickinmatesearch.org/" class="hero-btn">Launch Search Portal</a>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <div class="layout">
+
+            <!-- MAIN ARTICLE -->
+            <div class="main-content">
+                <p>
+                    Transparency in the justice system is vital for public safety and family support. The
+                    <a href="https://sedgwickinmatesearch.org/" class="green-link">official Sedgwick County Inmate
+                        Search</a>
+                    provides real-time access to the adult detention facility roster, ensuring that victims, attorneys,
+                    and family members have accurate custody information.
+                </p>
+
+                <div class="highlight-box">
+                    <strong>Pro-Tip:</strong>
+                    When using the <a href="https://sedgwickinmatesearch.org/" class="green-link">search tool</a>,
+                    ensure you have the correct spelling of the individual's last name for the most accurate results.
+                </div>
+
+                <h2>Accessing Inmate Records Online</h2>
+                <p>
+                    The digital lookup system serves as a bridge between the facility and the community. By visiting
+                    <a href="https://sedgwickinmatesearch.org/" class="green-link">sedgwickinmatesearch.org</a>,
+                    you can skip the long phone wait times and find answers instantly.
+                </p>
+
+                <h3>Data Available Through the Portal</h3>
+                <ul>
+                    <li><strong>Current Location:</strong> Specific housing assignments within the jail.</li>
+                    <li><strong>Booking Details:</strong> Time and date of entry into the facility.</li>
+                    <li><strong>Bond Status:</strong> Current bail amounts and type of bond required.</li>
+                    <li><strong>Case Information:</strong> Active charges and upcoming court appearances.</li>
+                </ul>
+
+                <h2>Communication & Family Support</h2>
+                <p>
+                    Staying connected with an incarcerated individual is key to their rehabilitation. Use the
+                    <a href="https://sedgwickinmatesearch.org/" class="green-link">Search Guide</a>
+                    to find specific booking numbers required for:
+                </p>
+                <p>
+                    1. <strong>Depositing Funds:</strong> Ensuring the inmate has access to commissary. <br>
+                    2. <strong>Scheduling Visits:</strong> Both in-person and video visitation options. <br>
+                    3. <strong>Mailing:</strong> Following the strict guidelines for physical correspondence.
+                </p>
+
+                <div class="stats">
+                    <div class="stat-box">
+                        <h4>Live</h4>
+                        <p>Database Updates</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Free</h4>
+                        <p>Public Access</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>24/7</h4>
+                        <p>Available Online</p>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 40px;">Legal and Privacy Notices</h2>
+                <p>
+                    Information found on the <a href="https://sedgwickinmatesearch.org/" class="green-link">inmate
+                        lookup portal</a>
+                    is public record but should be used responsibly. Records are updated as processing occurs throughout
+                    the 24-hour cycle.
+                </p>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="card">
+                    <h3>Quick Access</h3>
+                    <p><strong>Region:</strong> Sedgwick County, KS</p>
+                    <p><strong>Platform:</strong> <a href="https://sedgwickinmatesearch.org/"
+                            class="green-link">Official Lookup</a></p>
+                    <p><strong>Status:</strong> Active & Updated</p>
+                    <a href="https://sedgwickinmatesearch.org/" class="cta-sidebar">Go to Search Portal →</a>
+                </div>
+
+                <div class="card">
+                    <h3>Key Services</h3>
+                    <ul>
+                        <li><a href="https://sedgwickinmatesearch.org/">Inmate Lookup Tool</a></li>
+                        <li><a href="https://sedgwickinmatesearch.org/">Booking Number Search</a></li>
+                        <li><a href="https://sedgwickinmatesearch.org/">Bond & Bail Info</a></li>
+                        <li><a href="https://sedgwickinmatesearch.org/">Visitation Guidelines</a></li>
+                        <li><a href="https://sedgwickinmatesearch.org/">Court Date Records</a></li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background: var(--light-green); border: none;">
+                    <h3>Helpful Resource</h3>
+                    <p style="font-size: 14px;">
+                        The search portal at <a href="https://sedgwickinmatesearch.org/"
+                            class="green-link">SedgwickInmateSearch.org</a>
+                        is the most reliable way to verify custody status for the Wichita metro area.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://sedgwickinmatesearch.org/">Home</a>
+            <a href="https://sedgwickinmatesearch.org/">Search</a>
+            <a href="https://sedgwickinmatesearch.org/">Privacy Policy</a>
+        </div>
+        <p>
+            © 2026 Sedgwick County Inmate Search Resource | Emerald Green Professional UI <br>
+            Independent Information Guide for Public Record Access.
+        </p>
+    </footer>
+
+</body>
+
+</html>
